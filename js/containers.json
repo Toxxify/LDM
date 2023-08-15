@@ -1,0 +1,74 @@
+containers = {
+  "eurotruck86": {
+    "name": "Eurotruck 86",
+    "length": 1360,
+    "width": 240/*245*/,
+    "height": 260/*265*/,
+    "doorWidth": null, /*см*/
+    "doorHeight": null, /*см*/
+    "maxWeight": 24000,/*24т*/
+    "capacity": 86, /*м3*/
+    "ownWeight": "___", /*кг*/
+    "img": "Eurotruck86.jpg"
+  },
+  "standard20": {
+    "name": "20' STANDART",
+    "length": 589.5, /*см*/
+    "width": 235.0, /*см*/
+    "height": 239.2, /*см*/
+    "doorWidth": 234.0, /*см*/
+    "doorHeight": 229.2, /*см*/
+    "maxWeight": 28230, /*кг*/
+    "capacity": 33, /*м3*/
+    "ownWeight": 2230, /*кг*/
+    "img": "20' STANDART.jpg"
+  },
+  "standard40": {
+    "name": "40' STANDART",
+    "length": 1202.9, /*см*/
+    "width": 235.0, /*см*/
+    "height": 239.2, /*см*/
+    "doorWidth": 234.0, /*см*/
+    "doorHeight": 229.2, /*см*/
+    "maxWeight": 26700, /*кг*/
+    "capacity": 67, /*м3*/
+    "ownWeight": 3780, /*кг*/
+    "img": "40' STANDART.jpg"
+  },
+  "highcube40": {
+    "name": "40' HIGH-CUBE",
+    "length": 1202.4, /*см*/
+    "width": 235.0, /*см*/
+    "height": 269.7, /*см*/
+    "doorWidth": 234.0, /*см*/
+    "doorHeight": 259.7, /*см*/
+    "maxWeight": 26460, /*кг*/
+    "capacity": 76, /*м3*/
+    "ownWeight": 4020, /*кг*/
+    "img": "40' HIGH-CUBE.jpg"
+  },
+  "opentop20": {
+    "name": "20' OPEN TOP",
+    "length": 588.8, /*см*/
+    "width": 234.5, /*см*/
+    "height": 231.5, /*см*/
+    "doorWidth": 228.6, /*см*/
+    "doorHeight": 218.4, /*см*/
+    "maxWeight": 30480, /*кг*/
+    "capacity": 32, /*м3*/
+    "ownWeight": 2250, /*кг*/
+    "img": "20' OPEN TOP.jpg"
+  },
+  "opentop40": {
+    "name": "40' OPEN TOP",
+    "length": 1202.9, /*см*/
+    "width": 234.2, /*см*/
+    "height": 232.6, /*см*/
+    "doorWidth": 234.1, /*см*/
+    "doorHeight": 227.4, /*см*/
+    "maxWeight": 26670, /*кг*/
+    "capacity": 65, /*м3*/
+    "ownWeight": 3810, /*кг*/
+    "img": "40' OPEN TOP.jpg"
+  }
+}

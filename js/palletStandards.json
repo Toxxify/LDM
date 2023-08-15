@@ -1,0 +1,14 @@
+palletStandards = {
+  "standartEURO": {
+    "lenght" : 120,
+    "width" : 80
+  },
+  "standartFIN": {
+    "lenght" : 120,
+    "width" : 100
+  },
+  "standartUSA": {
+    "lenght" : 120,
+    "width" : 120
+  }
+}
