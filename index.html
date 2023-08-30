@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Программы для расчета загрузки полуприцепов и контейнеров">
+  <title>LDM</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="__">
+      <div class="semitrailer__header">
+        <div class="semitrailer__name" id="semitrailer-name">Полуприцеп:</div>
+        <button class="fa fa-truck semitrailer-truck" id="truck" title="Выбрать полуприцеп"></button>
+      </div>
+      <!-- <div class="semitrailer-list"></div> -->
+
+      <div class="semitrailer" id="semitrailer">
+        <div class="semitrailer__space" id="semitrailer-space"></div>
+        <div class="semitrailer__total" id="semitrailer-total">
+          <div id="st-total-LDM"></div>
+          <div id="st-total-pallets"></div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="main">
+      <div class="cargo">
+        <div class="cargo__list-header">Список грузов:</div>
+
+        <div class="cargo__list-wrapper">
+          <ul class="cargo__list" id="cargo-list"></ul>
+        </div>
+        
+        <div class="cargo__total">
+          <div class="cargo__total-header">Общее:</div>
+          <div id="totalLDM"></div>
+          <div id="totalWeight"></div>
+          <div id="totalVolume"></div>
+          <div id="totalPallets"></div>
+        </div>
+      </div>
+
+      
+
+      
+
+
+
+      <form class="x-form" id="x-form">
+        <header class="x-form__header">
+          <div class="x-form__title">Данные груза:</div>
+          <input class="x-form__description" type="text" id="inputText" placeholder="описание (необязательно)" autocomplete="off">
+        </header>
+
+        <div class="x-form__wrapper">
+
+          <!-- 1 grid element -->
+          <div class="x-form__grid-element x-form__count">
+            <div class="x-form__block-header">колличество</div>
+            <div class="x-form__block-wrapper">
+                <!-- <label for="inputPalletCount">кол-во. шт.</label> -->
+                <input class="x-form__input" type="text" id="inputPalletCount" required autocomplete="off" value="1">
+            </div>
+          </div>
+
+          <!-- 2 grid element -->
+          <div class="x-form__grid-element x-form__collor" title="Изменить цвет отображения паллет">
+            <button class="x-form__block-header x-form__collor-button" id="colorGenerator">цвет</button>
+            <div class="x-form__block-wrapper">
+              <div class="x-form__collor-template" id="colorCargo"></div>
+            </div>
+          </div>
+
+          <!-- 3 grid element -->
+          <div class="x-form__grid-element tabs tabs-dimensions">
+            <input type="radio" name="tab-btn" id="tab-btn-1" value="" checked>
+            <label for="tab-btn-1">габариты</label>
+            <input type="radio" name="tab-btn" id="tab-btn-2" value="">
+            <label for="tab-btn-2">объём</label>
+        
+            <div id="content-1">
+              <div class="x-form__block-wrapper">
+                <div class="x-form__dimensions-sizes">
+                  <div>
+                    <label class="x-form__label" for="inputLength">длина (см)</label>
+                    <input class="x-form__dimensions-sizes-input required" data-required='requiredLength' type="text" id="inputLength" placeholder="" required autocomplete="off" pattern="^[ 0-9]+$" onkeyup="isRequired(this)">
+                  </div>
+
+                  <div>
+                    <label class="x-form__label" for="inputWidth">ширина (см)</label>
+                    <input class="x-form__dimensions-sizes-input required" data-required='requiredWidth' type="text" id="inputWidth" placeholder="" required autocomplete="off" pattern="^[ 0-9]+$" onkeyup="isRequired(this)">
+                  </div>
+
+                  <div>
+                    <label class="x-form__label" for="inputHeight">высота (см)</label>
+                    <input class="x-form__dimensions-sizes-input required" data-required='requiredHeight' type="text" id="inputHeight" placeholder="" required autocomplete="off" pattern="^[ 0-9]+$" onkeyup="isRequired(this)">
+                  </div>
+                </div>
+                
+                <div class="x-form__standart" id="x-form-Standart">
+                  <div class="btn-standart" data-std="eur" title="Размер европаллеты 120*80 см">европейский</div>
+                  <div class="btn-standart" data-std="fin" title="Размер финского паллета 120*100 см">финский</div>
+                  <div class="btn-standart" data-std="usa" title="Размер американского паллета 120*120 см">американский</div>
+                </div>
+              </div>
+            </div>
+            
+            <div id="content-2">
+              <div class="x-form__block-wrapper">
+                <div class="x-form__params-cell">
+                  <label class="x-form__label" for="inputValue">объём (м3)</label>
+                  <input class="required" data-required='requiredLength' type="text" id="inputValue" placeholder="" required autocomplete="off" pattern="^[ 0-9]+$" onkeyup="isRequired(this)"> 
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 grid element -->
+          <div class="x-form__grid-element tabs tabs-weight">
+            <input type="radio" name="tab-btn-weight" id="tab-btn-3" value="" checked data-sumpu="false">
+            <label for="tab-btn-3">вес</label>
+            <input type="radio" name="tab-btn-weight" id="tab-btn-4" value="" data-sumpu="true">
+            <label for="tab-btn-4">общ вес</label>
+        
+            <div id="content-3">
+              <div class="x-form__block-wrapper">
+                <label class="x-form__label" for="inputWeight">вес (кг)</label>
+              </div>
+            </div>
+            
+            <div id="content-4">
+              <div class="x-form__block-wrapper">
+                <div class="x-form__params-cell">
+                  <label class="x-form__label" for="inputWeight">общий вес (кг)</label>
+                </div>
+              </div>
+            </div>
+            <input class="x-form__input x-form__input--weight required"  data-required='requiredWeight' type="text" id="inputWeight" placeholder="" required autocomplete="off" pattern="^[ 0-9]+$" onkeyup="isRequired(this)">
+          </div>
+
+          <!-- 5 grid element -->
+          <div class="x-form__grid-element x-form__stabling">
+            <div class="x-form__block-header" title="Штабелирование груза – это способ укладки товаров штабелями в несколько ярусов.">
+              <input class="x-form__stabling-checkbox" type="checkbox" id="inputStacking">
+              <label class="x-form__stabling-label" for="inputStacking">штабелирование</label>
+            </div>
+
+            <div class="x-form__block-wrapper">
+              <label class="x-form__label" for="stackingMaxHeight">высота штаб.</label>
+              <input class="x-form__input x-form__stab-height" type="text" name="" id="stackingMaxHeight" disabled>
+              
+              <label class="x-form__label" for="stackingMaxCount">число в штаб.</label>
+              <input class="x-form__input x-form__stab-count" type="text" name="" id="stackingMaxCount" disabled>
+            </div>
+          </div>
+
+          <!-- 6 grid element -->
+          <div class="x-form__action-buttons">
+            <button id="x-form--save" type="submit">сохранить</button>
+            <button id="x-form--change" class=" hidden" type="submit">изменить</button>
+            <button id="x-form--add" type="submit">сохранить и продолжить</button>
+            <button id="___" type="submit">}добавить{</button>
+            <button id="x-form--clear">очистить</button>
+          </div>
+
+        </div>
+      </form>
+
+
+
+
+      
+    </div><!--main-->
+  
+    <div class="sidebar">
+      <div class="sidebar-header">Описание:</div>
+    </div>
+
+  <div id="popup-containers" class="hidden"></div>
+  </div><!--container-->
+
+
+  <script src="js/containers.json"></script>
+  <script src="js/palletStandards.json"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
