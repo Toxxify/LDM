@@ -8,7 +8,7 @@ containers = {
     "doorHeight": null, /*см*/
     "maxWeight": 24000,/*24т*/
     "capacity": 86, /*м3*/
-    "ownWeight": "___", /*кг*/
+    "ownWeight": 6330, /*кг*/ /*Технические характеристики полуприцепа Schmitz S.CS UNIVERSAL*/
     "img": "Eurotruck86.jpg"
   },
   "standard20": {

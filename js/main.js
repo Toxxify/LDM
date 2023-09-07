@@ -29,6 +29,7 @@ let colorCargo = document.querySelector('#colorCargo');
 colorGenerator.addEventListener('click', changeColor);
 
 const popupContainers = document.querySelector("#popup-containers");
+const popupOverlay = document.querySelector(".popup-overlay");
 let truck = document.querySelector("#truck");
 truck.addEventListener("click", selectContainers);
 
@@ -367,13 +368,20 @@ function isRequired(obj) {
   // https://javascript.ru/forum/misc/30075-ogranichenie-maksimalnogo-chisla-vvoda.html
 }
 
+popupOverlay.addEventListener('click', closePopup)
 function selectContainers(e) {
   e.preventDefault();
   if(popupContainers.classList == 'hidden') {
     popupContainers.classList.remove('hidden');
+    popupOverlay.classList.remove('hidden');
   } else {
     popupContainers.classList.add('hidden');
+    popupOverlay.classList.add('hidden');
   }
+}
+function closePopup() {
+  popupContainers.classList.add('hidden');
+  popupOverlay.classList.add('hidden');
 }
 
 for (key in containers) {
@@ -388,14 +396,16 @@ function layout (name, length, width, height, doorWidth, doorHeight, maxWeight, 
   return `
   <div class="containers-item__name">${name}</div>
   <div class="containers-item__wrap">
-    <div><img class="containers-item__img" src="img/${img}" alt=""></div>
-    <div>
+    <div class="containers-item__img-wrapper">
+      <img class="containers-item__img" src="img/${img}" alt="">
+    </div>
+    <div class="containers-item__data">
       <div>Длина внутри ${length} см</div>
       <div>Ширина внутри ${width} см</div>
       <div>Высота внутри ${height} см</div>
       <div>Вес констукции ${ownWeight} кг</div>
     </div>
-    <div>
+    <div class="containers-item__data">
       <div>Ширина двери ${doorWidth} см</div>
       <div>Высота двери ${doorHeight} см</div>
       <div>Вместимость ${capacity} м3</div>
@@ -405,11 +415,12 @@ function layout (name, length, width, height, doorWidth, doorHeight, maxWeight, 
   `
 }
 
+let semitrailerName = document.querySelector('#semitrailer-name');
 popupContainers.addEventListener('click', choiseContainers);
 function choiseContainers(e){
   const cName = e.target.closest('.containers-item').dataset.containerName;
   popupContainers.classList.add('hidden')
-  truck.innerHTML = containers[cName].name.toLowerCase();
+  semitrailerName.innerHTML = containers[cName].name.toLowerCase();
   setSemitrailer(containers[cName].length, containers[cName].width);
 }
 

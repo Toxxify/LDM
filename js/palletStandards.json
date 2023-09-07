@@ -10,5 +10,9 @@ palletStandards = {
   "standartUSA": {
     "lenght" : 120,
     "width" : 120
+  },
+  "standartAsia": {
+    "lenght" : 110,
+    "width" : 110
   }
 }
